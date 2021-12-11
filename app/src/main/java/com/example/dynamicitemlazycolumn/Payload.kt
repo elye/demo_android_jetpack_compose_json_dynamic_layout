@@ -11,11 +11,15 @@ val payloadOne = """
                "type":"IMAGE",
                "message":"Hello Here",
                "backgroundColor": "GREEN"
+               
             },
             {
                "type":"IMAGE",
                "message":"Thank You!!",
-               "backgroundColor": "RED"
+               "backgroundColor": "BLUE"
+            },
+            {
+                "type":"SOMETHING ELSE"
             }
          ]
       }

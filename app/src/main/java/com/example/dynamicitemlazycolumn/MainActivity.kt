@@ -39,7 +39,14 @@ class MainActivity : ComponentActivity() {
                     .withSubtype(Button::class.java, Type.BUTTON.name)
                     .withSubtype(Image::class.java, Type.IMAGE.name)
                     .withSubtype(Row::class.java, Type.ROW.name)
-                    .withSubtype(Column::class.java, Type.COLUMN.name))
+                    .withSubtype(Column::class.java, Type.COLUMN.name)
+                    .withDefaultValue(
+                        Text(
+                            "Oh, what's that?",
+                            backgroundColor = ItemColor.RED
+                        )
+                    )
+            )
             .add(KotlinJsonAdapterFactory())
             .build()
 
