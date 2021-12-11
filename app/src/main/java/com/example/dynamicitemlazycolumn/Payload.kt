@@ -8,12 +8,14 @@ val payloadOne = """
          "type":"ROW",
          "listItems":[
             {
-               "type":"TEXT",
-               "message":"Hello Here"
+               "type":"IMAGE",
+               "message":"Hello Here",
+               "backgroundColor": "GREEN"
             },
             {
-               "type":"TEXT",
-               "message":"Thank You!!"
+               "type":"IMAGE",
+               "message":"Thank You!!",
+               "backgroundColor": "RED"
             }
          ]
       }

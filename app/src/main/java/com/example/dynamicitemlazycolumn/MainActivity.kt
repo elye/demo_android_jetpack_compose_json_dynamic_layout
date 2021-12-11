@@ -61,37 +61,43 @@ class Text(
     val textAlign: Align = Align.CENTER,
     val textFont: FontSize = FontSize.DEFAULT,
     alignment: Align = Align.CENTER,
-    weight: Float = 0f
-) : ListItems(Type.TEXT, alignment, weight)
+    weight: Float = 0f,
+    backgroundColor: ItemColor = ItemColor.NONE
+) : ListItems(Type.TEXT, alignment, weight, backgroundColor)
 
 class Button(
     val message: String,
     alignment: Align = Align.CENTER,
-    weight: Float = 0f
-) : ListItems(Type.BUTTON, alignment, weight)
+    weight: Float = 0f,
+    backgroundColor: ItemColor = ItemColor.NONE
+) : ListItems(Type.BUTTON, alignment, weight, backgroundColor)
 
 class Image(
     val imageAlign: Align = Align.CENTER,
     alignment: Align = Align.CENTER,
-    weight: Float = 0f
-) : ListItems(Type.IMAGE, alignment, weight)
+    weight: Float = 0f,
+    backgroundColor: ItemColor = ItemColor.NONE
+) : ListItems(Type.IMAGE, alignment, weight, backgroundColor)
 
 class Column(
     val listItems: List<ListItems>,
     alignment: Align = Align.CENTER,
-    weight: Float = 0f
-) : ListItems(Type.COLUMN, alignment, weight)
+    weight: Float = 0f,
+    backgroundColor: ItemColor = ItemColor.NONE
+) : ListItems(Type.COLUMN, alignment, weight, backgroundColor)
 
 class Row(
     val listItems: List<ListItems>,
     alignment: Align = Align.CENTER,
-    weight: Float = 0f
-) : ListItems(Type.ROW, alignment, weight)
+    weight: Float = 0f,
+    backgroundColor: ItemColor = ItemColor.NONE
+) : ListItems(Type.ROW, alignment, weight, backgroundColor)
 
 sealed class ListItems(
     val type: Type,
-    val alignment: Align,
-    val weight: Float = 0f
+    val alignment: Align = Align.NONE,
+    val weight: Float = 0f,
+    val backgroundColor: ItemColor = ItemColor.NONE
 )
 
 enum class Type {
@@ -100,6 +106,13 @@ enum class Type {
     IMAGE,
     COLUMN,
     ROW
+}
+
+enum class ItemColor {
+    NONE,
+    RED,
+    GREEN,
+    BLUE
 }
 
 enum class FontSize {
@@ -145,9 +158,12 @@ fun Greeting(payload: Payload) {
 private fun ColumnScope.createModifier(
     listItems: ListItems
 ): Modifier {
-    val modifier = if (listItems.weight > 0) {
+    var modifier = if (listItems.weight > 0) {
         Modifier.weight(listItems.weight)
     } else Modifier
+
+    modifier = commonModifier(modifier, listItems)
+
     return when (listItems.alignment) {
         Align.START -> modifier.align(Alignment.Start)
         Align.END -> modifier.align(Alignment.End)
@@ -158,12 +174,34 @@ private fun ColumnScope.createModifier(
 }
 
 @Composable
+private fun commonModifier(
+    modifier: Modifier,
+    listItems: ListItems
+): Modifier {
+    var modifier1 = modifier
+    modifier1 = if (listItems.backgroundColor == ItemColor.RED) {
+        modifier1.background(Color.Red)
+    } else if (listItems.backgroundColor == ItemColor.GREEN) {
+        modifier1.background(Color.Green)
+    } else if (listItems.backgroundColor == ItemColor.BLUE) {
+        modifier1.background(Color.Blue)
+    } else {
+        modifier1
+    }
+    return modifier1
+}
+
+@Composable
 private fun RowScope.createModifier(
     listItems: ListItems
 ): Modifier {
-    val modifier = if (listItems.weight > 0) {
+
+    var modifier = if (listItems.weight > 0) {
         Modifier.weight(listItems.weight)
     } else Modifier
+
+    modifier = commonModifier(modifier, listItems)
+
     return when (listItems.alignment) {
         Align.START -> modifier.align(Alignment.Top)
         Align.END -> modifier.align(Alignment.Bottom)
@@ -196,7 +234,7 @@ private fun constructPart(
             }
             Text(
                 text = text,
-                modifier = modifier.background(Color.Red),
+                modifier = modifier,
                 textAlign = textAlign,
                 fontSize = fontSize
             )
@@ -214,7 +252,7 @@ private fun constructPart(
                 else -> Alignment.Center
             }
             val image: Painter = painterResource(id = R.drawable.ic_launcher_foreground)
-            Image(image, "", modifier = modifier.background(Color.Blue), alignment = imageAlign)
+            Image(image, "", modifier = modifier, alignment = imageAlign)
         }
         Type.COLUMN -> {
             val items = (listItems as Column).listItems
