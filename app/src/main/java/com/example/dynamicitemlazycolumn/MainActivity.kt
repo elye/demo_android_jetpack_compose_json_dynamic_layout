@@ -52,11 +52,13 @@ class MainActivity : ComponentActivity() {
 
         val adapter: JsonAdapter<Payload> = moshi.adapter(Payload::class.java)
 
-        setContent {
-            DynamicItemLazyColumnTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colors.background) {
-                    Greeting(payload = adapter.fromJson(payloadOne)!!)
+        adapter.fromJson(payloadMany)?.let{
+            setContent {
+                DynamicItemLazyColumnTheme {
+                    // A surface container using the 'background' color from the theme
+                    Surface(color = MaterialTheme.colors.background) {
+                        Greeting(payload = it)
+                    }
                 }
             }
         }

@@ -380,15 +380,16 @@ val payloadMany = """
                "listItems":[
                   {
                      "type":"TEXT",
-                     "message":"Contact Agent",
+                     "message":"Mr Charming",
                      "textAlign":"CENTER",
                      "textFont":"HUGE",
                      "alignment":"START",
+                     "backgroundColor":"RED",
                      "weight":0.0
                   },
                   {
                      "type":"TEXT",
-                     "message":"15/125-129 Hawthorn Road\nForest Hill 3131\nVic",
+                     "message":"10001 Some Nice Road\nGreat Suburb 1234\nHeaven",
                      "textAlign":"START",
                      "textFont":"DEFAULT",
                      "alignment":"START",
@@ -402,6 +403,7 @@ val payloadMany = """
                "type":"IMAGE",
                "imageAlign":"CENTER",
                "alignment":"END",
+               "backgroundColor":"GREEN",
                "weight":0.0
             }
          ],
@@ -422,7 +424,7 @@ val payloadMany = """
                "listItems":[
                   {
                      "type":"TEXT",
-                     "message":"Contact Agent",
+                     "message":"Mr Smart",
                      "textAlign":"CENTER",
                      "textFont":"HUGE",
                      "alignment":"START",
@@ -430,7 +432,7 @@ val payloadMany = """
                   },
                   {
                      "type":"TEXT",
-                     "message":"15/125-129 Hawthorn Road\nForest Hill 3131\nVic",
+                     "message":"10001 Some Nice Road\nGreat Suburb 1234\nHeaven",
                      "textAlign":"START",
                      "textFont":"DEFAULT",
                      "alignment":"START",
@@ -458,15 +460,16 @@ val payloadMany = """
                "listItems":[
                   {
                      "type":"TEXT",
-                     "message":"Contact Agent",
+                     "message":"Mr Handsome",
                      "textAlign":"CENTER",
                      "textFont":"HUGE",
                      "alignment":"CENTER",
+                     "backgroundColor":"BLUE",
                      "weight":0.0
                   },
                   {
                      "type":"TEXT",
-                     "message":"15/125-129 Hawthorn Road\nForest Hill 3131\nVic",
+                     "message":"10001 Some Nice Road\nGreat Suburb 1234\nHeaven",
                      "textAlign":"CENTER",
                      "textFont":"DEFAULT",
                      "alignment":"CENTER",
