@@ -20,7 +20,6 @@ import com.example.dynamicitemlazycolumn.ui.model.ConstructPart
 import com.example.dynamicitemlazycolumn.ui.model.parts.ListItems
 import com.example.dynamicitemlazycolumn.ui.model.utils.createModifier
 import com.example.dynamicitemlazycolumn.ui.theme.DynamicItemLazyColumnTheme
-import com.squareup.moshi.JsonAdapter
 
 class Payload(val listItems: List<ListItems>)
 
@@ -28,7 +27,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        loadPayload()?.let{
+        loadPayload(payloadMany)?.let{
             setContent {
                 DynamicItemLazyColumnTheme {
                     // A surface container using the 'background' color from the theme

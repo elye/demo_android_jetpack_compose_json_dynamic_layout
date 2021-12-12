@@ -11,7 +11,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.PolymorphicJsonAdapterFactory
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
-fun loadPayload(): Payload? {
+fun loadPayload(jsonPayload: String): Payload? {
     val moshi = Moshi.Builder()
         .add(
             PolymorphicJsonAdapterFactory.of(ListItems::class.java, "type")
@@ -37,5 +37,5 @@ fun loadPayload(): Payload? {
         .build()
 
     val adapter: JsonAdapter<Payload> = moshi.adapter(Payload::class.java)
-    return adapter.fromJson(payloadMany)
+    return adapter.fromJson(jsonPayload)
 }
