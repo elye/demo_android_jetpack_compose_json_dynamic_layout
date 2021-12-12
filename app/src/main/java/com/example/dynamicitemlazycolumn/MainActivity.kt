@@ -187,17 +187,12 @@ private fun commonModifier(
     modifier: Modifier,
     listItems: ListItems
 ): Modifier {
-    var modifier1 = modifier
-    modifier1 = if (listItems.backgroundColor == ItemColor.RED) {
-        modifier1.background(Color.Red)
-    } else if (listItems.backgroundColor == ItemColor.GREEN) {
-        modifier1.background(Color.Green)
-    } else if (listItems.backgroundColor == ItemColor.BLUE) {
-        modifier1.background(Color.Blue)
-    } else {
-        modifier1
+    return when (listItems.backgroundColor) {
+        ItemColor.RED -> modifier.background(Color.Red)
+        ItemColor.GREEN -> modifier.background(Color.Green)
+        ItemColor.BLUE -> modifier.background(Color.Blue)
+        else -> modifier
     }
-    return modifier1
 }
 
 @Composable
