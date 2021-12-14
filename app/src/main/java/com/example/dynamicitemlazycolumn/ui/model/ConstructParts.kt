@@ -1,9 +1,11 @@
 package com.example.dynamicitemlazycolumn.ui.model
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material.Button
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -19,6 +21,8 @@ import com.example.dynamicitemlazycolumn.ui.model.type.FontSize
 import com.example.dynamicitemlazycolumn.ui.model.type.Type
 import com.example.dynamicitemlazycolumn.ui.model.utils.createModifier
 
+@ExperimentalAnimationApi
+@ExperimentalMaterialApi
 @Composable
 fun ConstructPart(
     listItems: ListItems,
@@ -61,6 +65,18 @@ fun ConstructPart(
             }
             val image: Painter = painterResource(id = R.drawable.ic_launcher_foreground)
             Image(image, "", modifier = modifier, alignment = imageAlign)
+        }
+        Type.EXPANDABLE -> {
+            val expandable = (listItems as Expandable)
+            ExpandableCard (
+                title = expandable.message,
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = modifier
+            ) {
+                for (item in expandable.listItems) {
+                    ConstructPart(item, createModifier(item))
+                }
+            }
         }
         Type.COLUMN -> {
             val items = (listItems as Column).listItems

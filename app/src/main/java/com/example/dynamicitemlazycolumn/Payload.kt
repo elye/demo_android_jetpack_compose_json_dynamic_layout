@@ -8,21 +8,249 @@ val payloadOne = """
          "type":"ROW",
          "listItems":[
             {
-               "type":"IMAGE",
-               "message":"Hello Here",
-               "backgroundColor": "GREEN"
-               
+                "type":"COLUMN",
+                "listItems":[
+                   {
+                      "type":"TEXT",
+                      "message":"Mr. Handsome",
+                      "backgroundColor":"RED",
+                      "textFont":"BIG"
+                   },
+                   {
+                      "type":"TEXT",
+                      "message":"123, Some Street\nSome Suburb, 2001\nCity",
+                      "backgroundColor":"GREEN"
+                   },
+                   {
+                      "type":"BUTTON",
+                      "message":"CALL 0123-456-789"
+                   }
+                ],
+                "weight":"2.0"
+            },
+            {
+                "type":"IMAGE",
+                "backgroundColor":"BLUE",
+                "weight":"1.0"
+            }      
+         ],
+         "alignment":"FILL"
+      }
+   ]
+}
+""".trimIndent()
+
+val payloadExpandable = """
+{
+   "listItems":[
+      {
+         "type":"ROW",
+         "listItems":[
+            {
+               "type":"COLUMN",
+               "listItems":[
+                  {
+                     "type":"TEXT",
+                     "message":"Mr Charming",
+                     "textAlign":"CENTER",
+                     "textFont":"HUGE",
+                     "alignment":"START",
+                     "backgroundColor":"RED",
+                     "weight":0.0
+                  },
+                  {
+                     "type":"TEXT",
+                     "message":"10001 Some Nice Road\nGreat Suburb 1234\nHeaven",
+                     "textAlign":"START",
+                     "textFont":"DEFAULT",
+                     "alignment":"START",
+                     "weight":0.0
+                  }
+               ],
+               "alignment":"FILL",
+               "weight":1.0
             },
             {
                "type":"IMAGE",
-               "message":"Thank You!!",
-               "backgroundColor": "BLUE"
-            },
+               "imageAlign":"CENTER",
+               "alignment":"END",
+               "backgroundColor":"GREEN",
+               "weight":0.0
+            }
+         ],
+         "alignment":"CENTER",
+         "weight":0.0
+      },
+      {
+         "type":"EXPANDABLE",
+         "message":"Hello",
+         "listItems":[
             {
-                "type":"SOMETHING ELSE"
+                 "type":"ROW",
+                 "listItems":[
+                    {
+                        "type":"COLUMN",
+                        "listItems":[
+                           {
+                              "type":"TEXT",
+                              "message":"Mr. Handsome",
+                              "backgroundColor":"RED",
+                              "textFont":"BIG"
+                           },
+                           {
+                              "type":"TEXT",
+                              "message":"123, Some Street\nSome Suburb, 2001\nCity",
+                              "backgroundColor":"GREEN"
+                           },
+                           {
+                              "type":"BUTTON",
+                              "message":"CALL 0123-456-789"
+                           }
+                        ],
+                        "weight":"2.0"
+                    },
+                    {
+                        "type":"IMAGE",
+                        "backgroundColor":"BLUE",
+                        "weight":"1.0"
+                    }      
+                 ],
+                 "alignment":"FILL"
             }
          ]
-      }
+      },
+
+
+      {
+         "type":"COLUMN",
+         "listItems": [
+            {
+                 "type":"TEXT",
+                 "message":"Some expandable below",
+                 "backgroundColor":"GREEN"
+            },
+            {
+                 "type":"EXPANDABLE",
+                 "message":"Hello there",
+                 "listItems":[
+                    {
+                         "type":"ROW",
+                         "listItems":[
+                            {
+                                "type":"COLUMN",
+                                "listItems":[
+                                   {
+                                      "type":"TEXT",
+                                      "message":"Mr. Handsome",
+                                      "backgroundColor":"RED",
+                                      "textFont":"BIG"
+                                   },
+                                   {
+                                      "type":"TEXT",
+                                      "message":"123, Some Street\nSome Suburb, 2001\nCity",
+                                      "backgroundColor":"GREEN"
+                                   },
+                                   {
+                                      "type":"BUTTON",
+                                      "message":"CALL 0123-456-789"
+                                   }
+                                ],
+                                "weight":"2.0"
+                            },
+                            {
+                                "type":"IMAGE",
+                                "backgroundColor":"BLUE",
+                                "weight":"1.0"
+                            }      
+                         ],
+                         "alignment":"FILL"
+                    }
+                 ]
+            
+            },
+            {
+                 "type":"TEXT",
+                 "message":"Some expandable above",
+                 "backgroundColor":"GREEN"
+            }
+         ]
+      },
+
+
+
+      {
+         "type":"ROW",
+         "listItems":[
+            {
+               "type":"IMAGE",
+               "imageAlign":"CENTER",
+               "alignment":"END",
+               "weight":0.0
+            },
+            {
+               "type":"COLUMN",
+               "listItems":[
+                  {
+                     "type":"TEXT",
+                     "message":"Mr Smart",
+                     "textAlign":"CENTER",
+                     "textFont":"HUGE",
+                     "alignment":"START",
+                     "weight":0.0
+                  },
+                  {
+                     "type":"TEXT",
+                     "message":"10001 Some Nice Road\nGreat Suburb 1234\nHeaven",
+                     "textAlign":"START",
+                     "textFont":"DEFAULT",
+                     "alignment":"START",
+                     "weight":0.0
+                  }
+               ],
+               "alignment":"FILL",
+               "weight":1.0
+            }
+         ],
+         "alignment":"CENTER",
+         "weight":0.0
+      },
+      {
+         "type":"ROW",
+         "listItems":[
+            {
+               "type":"IMAGE",
+               "imageAlign":"CENTER",
+               "alignment":"END",
+               "weight":0.0
+            },
+            {
+               "type":"COLUMN",
+               "listItems":[
+                  {
+                     "type":"TEXT",
+                     "message":"Mr Handsome",
+                     "textAlign":"CENTER",
+                     "textFont":"HUGE",
+                     "alignment":"CENTER",
+                     "backgroundColor":"BLUE",
+                     "weight":0.0
+                  },
+                  {
+                     "type":"TEXT",
+                     "message":"10001 Some Nice Road\nGreat Suburb 1234\nHeaven",
+                     "textAlign":"CENTER",
+                     "textFont":"DEFAULT",
+                     "alignment":"CENTER",
+                     "weight":0.0
+                  }
+               ],
+               "alignment":"FILL",
+               "weight":1.0
+            }
+         ],
+         "alignment":"CENTER",
+         "weight":0.0
+      }     
    ]
 }
 """.trimIndent()

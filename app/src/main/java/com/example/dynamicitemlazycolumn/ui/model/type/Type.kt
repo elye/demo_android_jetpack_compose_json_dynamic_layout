@@ -5,5 +5,6 @@ enum class Type {
     BUTTON,
     IMAGE,
     COLUMN,
-    ROW
+    ROW,
+    EXPANDABLE
 }

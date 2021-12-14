@@ -3,12 +3,14 @@ package com.example.dynamicitemlazycolumn
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
@@ -23,11 +25,13 @@ import com.example.dynamicitemlazycolumn.ui.theme.DynamicItemLazyColumnTheme
 
 class Payload(val listItems: List<ListItems>)
 
+@ExperimentalMaterialApi
+@ExperimentalAnimationApi
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        loadPayload(payloadMany)?.let{
+        loadPayload(payloadExpandable)?.let{
             setContent {
                 DynamicItemLazyColumnTheme {
                     // A surface container using the 'background' color from the theme
@@ -40,6 +44,8 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@ExperimentalAnimationApi
+@ExperimentalMaterialApi
 @Composable
 fun Greeting(payload: Payload) {
     val dynamicListItem = payload.listItems
